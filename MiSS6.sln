@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiSS6", "WindowsFormsApplication1\MiSS6.csproj", "{57FDF078-9346-4110-BF9A-FC767F87CF13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiSS6", "MiSS6\MiSS6.csproj", "{57FDF078-9346-4110-BF9A-FC767F87CF13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
