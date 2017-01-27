@@ -51,15 +51,11 @@ namespace WindowsFormsApplication1
                 double c = 1.25 * Math.Sqrt(L);
                 double w = (2*Math.PI)/ Math.Sqrt(L);
 
-                //System.IO.StreamWriter file = new System.IO.StreamWriter(@"data.txt");
-
                 for(int frame = 0; frame < FramesNumber; frame++)
                 {
-                    //file.Write(frame + ": ");
                     for(int x=0; x < XSIZE; x++)
                     {
                         double temp = (x - (c * frame /60)) /R;
-                        //if (x == 0) file.Write(temp + " ");
                         if (temp < -1)
                         {
                             if ((int)temp % 2 == 0) temp = temp - (int)temp;
@@ -73,7 +69,6 @@ namespace WindowsFormsApplication1
                         }
 
                         if (temp < 0) temp = -temp;
-                        //file.Write(temp + " ");
                         double arccos = Math.Acos(temp);
 
                         double omega;
@@ -86,7 +81,6 @@ namespace WindowsFormsApplication1
 
                         
                     }
-                    //file.WriteLine(Data[frame, 1, 1, 0] + " ");
                 }
 
                 this.buttonCalculate.Enabled = true;
