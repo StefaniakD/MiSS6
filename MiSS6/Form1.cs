@@ -43,7 +43,7 @@ namespace WindowsFormsApplication1
                 this.buttonStartPause.Enabled = false;
                 this.buttonReverse.Enabled = false;
 
-                FramesNumber = (int)(numericUpDownTEnd.Value - numericUpDownTStart.Value)*30;
+                FramesNumber = (int)(numericUpDownTEnd.Value - numericUpDownTStart.Value)*60;
                 Data = new double[FramesNumber, XSIZE, 2, 1];
 
                 double R = (double)numericUpDownR.Value*100;
@@ -51,15 +51,15 @@ namespace WindowsFormsApplication1
                 double c = 1.25 * Math.Sqrt(L);
                 double w = (2*Math.PI)/ Math.Sqrt(L);
 
-                System.IO.StreamWriter file = new System.IO.StreamWriter(@"data.txt");
+                //System.IO.StreamWriter file = new System.IO.StreamWriter(@"data.txt");
 
                 for(int frame = 0; frame < FramesNumber; frame++)
                 {
-                    file.Write(frame + ": ");
+                    //file.Write(frame + ": ");
                     for(int x=0; x < XSIZE; x++)
                     {
-                        double temp = (x - (c * frame /30)) /R;
-                        if (x == 0) file.Write(temp + " ");
+                        double temp = (x - (c * frame /60)) /R;
+                        //if (x == 0) file.Write(temp + " ");
                         if (temp < -1)
                         {
                             if ((int)temp % 2 == 0) temp = temp - (int)temp;
@@ -71,19 +71,22 @@ namespace WindowsFormsApplication1
                             if ((int)temp % 2 == 0) temp = temp - (int)temp;
                             if ((int)temp % 2 == 1) temp = 1 - (temp - (int)temp);
                         }
-                        if (x == 0) file.Write(temp + " ");
+
+                        if (temp < 0) temp = -temp;
+                        //file.Write(temp + " ");
                         double arccos = Math.Acos(temp);
 
                         double omega;
                         if (frame%30 ==0) omega = 0;
-                        else omega = arccos / frame /30;
-                        double z = R * Math.Sin(omega * frame/30);
+                        else omega = arccos / frame /60;
+                        double z = R * Math.Sin(omega * frame/60);
 
                         Data[frame, x, 0, 0] = x;
                         Data[frame, x, 1, 0] = z;
 
                         
-                    }file.WriteLine(Data[frame, 1, 1, 0] + " ");
+                    }
+                    //file.WriteLine(Data[frame, 1, 1, 0] + " ");
                     //MessageBox.Show(" ");
                 }
 
