@@ -87,7 +87,6 @@ namespace WindowsFormsApplication1
                         
                     }
                     //file.WriteLine(Data[frame, 1, 1, 0] + " ");
-                    //MessageBox.Show(" ");
                 }
 
                 this.buttonCalculate.Enabled = true;
@@ -117,7 +116,7 @@ namespace WindowsFormsApplication1
         void Render()
         {
             bmg.Clear(Color.White);
-            int wsp = 500;
+            int wsp = 1000;
             double x0 = 0;
             double z0 = 0;
             for(int i = 0; i < XSIZE; i++)
@@ -125,7 +124,7 @@ namespace WindowsFormsApplication1
                 double x = Data[ActualFrame, i, 0, 0];
                 double z = Data[ActualFrame, i, 1, 0];
                 if (z > 0) z = 200 + z * wsp;
-                if (z < 0) z = 200 - z * wsp;
+                if (z < 0) z = 200 + z * wsp;
                 if (i != 0) bmg.DrawLine(Pens.Blue, (float)x0, (float)z0, (float)x, (float)z);
                 x0 = x;
                 z0 = z;
